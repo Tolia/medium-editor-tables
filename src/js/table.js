@@ -41,7 +41,7 @@ Table.prototype = {
         for (x = 0; x <= rows; x++) {
             html += '<tr>';
             for (y = 0; y <= cols; y++) {
-                html += '<td>' + (x === 0 && y === 0 ? text : '<br />') + '</td>';
+                html += '<td>' + (x === 0 && y === 0 ? text : this._tdSpace) + '</td>';
             }
             html += '</tr>';
         }
@@ -95,7 +95,7 @@ Table.prototype = {
             i;
 
         for (i = 0; i < cols; i += 1) {
-            html += '<td><br /></td>';
+            html += '<td>' + this._tdSpace + '</td>';
         }
         tr.innerHTML = html;
         tbody.appendChild(tr);
@@ -113,5 +113,7 @@ Table.prototype = {
         if (row) {
             return row.cells[row.cells.length - 1];
         }
-    }
+    },
+
+    _tdSpace: '&nbsp;'
 };
